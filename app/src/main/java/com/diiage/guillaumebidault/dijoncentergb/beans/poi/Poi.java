@@ -3,11 +3,13 @@ package com.diiage.guillaumebidault.dijoncentergb.beans.poi;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 /**
  * Created by GuillaumeBidault on 08/09/2017.
  */
 
-public class Poi {
+public class Poi implements Serializable{
     String id;
     String type;
     String name;
@@ -51,4 +53,5 @@ public class Poi {
     public void setLocation(Location location) {
         this.location = location;
     }
+
 }

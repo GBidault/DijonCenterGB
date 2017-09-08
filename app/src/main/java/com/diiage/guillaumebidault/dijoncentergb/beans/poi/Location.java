@@ -3,11 +3,13 @@ package com.diiage.guillaumebidault.dijoncentergb.beans.poi;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 /**
  * Created by GuillaumeBidault on 08/09/2017.
  */
 
-public class Location {
+public class Location implements Serializable {
     String adress;
     String postalCode;
     String city;

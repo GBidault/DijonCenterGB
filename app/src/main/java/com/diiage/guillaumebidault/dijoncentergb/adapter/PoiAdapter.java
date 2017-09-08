@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.diiage.guillaumebidault.dijoncentergb.R;
@@ -33,6 +34,7 @@ public class PoiAdapter extends ArrayAdapter<Poi>{
             viewHolder = new PoiViewHolder();
             viewHolder.name = (TextView) convertView.findViewById(R.id.txtName_LstRowPoi);
             viewHolder.lieu = (TextView) convertView.findViewById(R.id.txtLieu_lstRowPoi);
+            viewHolder.logo = (ImageView)convertView.findViewById(R.id.imgLogo_LstRowPoi);
             convertView.setTag(viewHolder);
         }
 
@@ -40,6 +42,16 @@ public class PoiAdapter extends ArrayAdapter<Poi>{
         Poi poi = getItem(position);
         viewHolder.name.setText(poi.getName());
         viewHolder.lieu.setText(poi.getLocation().getCompletteAdress());
+        switch(poi.getType()){
+            case "CINE":
+                viewHolder.logo.setImageResource(R.drawable.cinema);
+                break;
+            case "REST":
+                viewHolder.logo.setImageResource(R.drawable.resto);
+                break;
+            default:
+                viewHolder.logo.setImageResource(R.drawable.none);
+        }
 
         return convertView;
     }
@@ -47,6 +59,7 @@ public class PoiAdapter extends ArrayAdapter<Poi>{
     private class PoiViewHolder{
         public TextView name;
         public TextView lieu;
+        public ImageView logo;
     }
 
 }
