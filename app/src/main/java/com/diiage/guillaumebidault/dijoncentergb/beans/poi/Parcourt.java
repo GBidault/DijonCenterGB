@@ -16,8 +16,8 @@ public class Parcourt {
     String nomCinema;
     String idRestaurant;
     String nomRestaurant;
-    Date dateCreation;
-    Date datePrevu;
+    String dateCreation;
+    String datePrevu;
     String accompagnant;
     String status;
 
@@ -30,8 +30,8 @@ public class Parcourt {
         nomCinema=cursor.getString(3);
         idRestaurant=cursor.getString(4);
         nomRestaurant=cursor.getString(5);
-        dateCreation=Date.valueOf(cursor.getString(6));
-        datePrevu=Date.valueOf(cursor.getString(7));
+        dateCreation=cursor.getString(6);
+        datePrevu=cursor.getString(7);
         accompagnant=cursor.getString(8);
         status=cursor.getString(9);
     }
@@ -84,19 +84,19 @@ public class Parcourt {
         this.nomRestaurant = nomRestaurant;
     }
 
-    public Date getDateCreation() {
+    public String getDateCreation() {
         return dateCreation;
     }
 
-    public void setDateCreation(Date dateCreation) {
+    public void setDateCreation(String dateCreation) {
         this.dateCreation = dateCreation;
     }
 
-    public Date getDatePrevu() {
+    public String getDatePrevu() {
         return datePrevu;
     }
 
-    public void setDatePrevu(Date datePrevu) {
+    public void setDatePrevu(String datePrevu) {
         this.datePrevu = datePrevu;
     }
 
@@ -124,8 +124,8 @@ public class Parcourt {
         values.put( "nomCinema",nomCinema);
         values.put( "idRestaurant",idRestaurant);
         values.put( "nomRestaurant",nomRestaurant);
-        values.put( "dateCreation",dateCreation.toString());
-        values.put( "datePrevu",datePrevu.toString());
+        values.put( "dateCreation",dateCreation);
+        values.put( "datePrevu",datePrevu);
         values.put( "accompagnant",accompagnant);
         values.put( "status",status);
 

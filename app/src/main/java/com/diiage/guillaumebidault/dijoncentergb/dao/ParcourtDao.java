@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.diiage.guillaumebidault.dijoncentergb.beans.poi.Parcourt;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by GuillaumeBidault on 20/09/2017.
  */
@@ -27,13 +30,25 @@ public class ParcourtDao {
         mSQLiteDapaBase.close();
     }
 
-    public Parcourt createComment(Parcourt parcourt) {
+    public Parcourt createParcourt(Parcourt parcourt) {
         long insertId = mSQLiteDapaBase.insert("parcourt", null,parcourt.getContentValues());
         Cursor cursor = mSQLiteDapaBase.query("parcourt",new String[]{"*"}, "id" + " = " + insertId, null,null, null, null);
         cursor.moveToFirst();
         Parcourt newParcourt = new Parcourt(cursor);
         cursor.close();
         return newParcourt;
+    }
+
+    public List<Parcourt> getParcourts(){
+        List<Parcourt> parcours=new ArrayList<>();
+        Cursor cursor = mSQLiteDapaBase.query("parcourt",new String[]{"*"},null, null,null, null, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()){
+            Parcourt parcourt=new Parcourt(cursor);
+            parcours.add(parcourt);
+            cursor.moveToNext();
+        }
+        return parcours;
     }
 
 }

@@ -40,8 +40,7 @@ public class ListPoiActivity extends AppCompatActivity {
                 Poi item=(Poi)adapterView.getAdapter().getItem(i);
                 Intent intent=new Intent(getBaseContext(),DetailPoiActivity.class);
                 intent.putExtra("Poi",item);
-                setResult(1,intent);
-                finish();
+                startActivity(intent);
 
             }
         });

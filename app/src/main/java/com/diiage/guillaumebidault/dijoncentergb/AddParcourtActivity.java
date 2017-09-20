@@ -12,6 +12,11 @@ import com.diiage.guillaumebidault.dijoncentergb.beans.poi.Parcourt;
 import com.diiage.guillaumebidault.dijoncentergb.beans.poi.Poi;
 import com.diiage.guillaumebidault.dijoncentergb.dao.ParcourtDao;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class AddParcourtActivity extends AppCompatActivity {
 
     Button mBtnAnnuler;
@@ -23,7 +28,7 @@ public class AddParcourtActivity extends AppCompatActivity {
 
     Parcourt mParcourt;
 
-    ParcourtDao parcourtDao;
+    ParcourtDao mParcourtDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +36,7 @@ public class AddParcourtActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_parcourt);
 
         mParcourt=new Parcourt();
-        parcourtDao=new ParcourtDao(this);
+        mParcourtDao=new ParcourtDao(this);
 
 
         //Definition des variables object par rapport a l'interface
@@ -55,10 +60,14 @@ public class AddParcourtActivity extends AppCompatActivity {
             public void onClick(View view) {
                 mParcourt.setNom(mTxtNom.getText().toString());
                 mParcourt.setAccompagnant(mTxtAccompagnant.getText().toString());
-
-                parcourtDao.open();
-                parcourtDao.createComment(mParcourt);
-                parcourtDao.close();
+                mParcourt.setDateCreation(new Date().toString());
+                SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy", Locale.FRANCE);
+                mParcourt.setDatePrevu(mTxtAccompagnant.getText().toString());
+                mParcourt.setStatus("A venir");
+                mParcourtDao.open();
+                mParcourtDao.createParcourt(mParcourt);
+                mParcourtDao.close();
+                finish();
             }
         });
 
