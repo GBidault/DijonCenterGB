@@ -1,68 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.diiage.guillaumebidault.dijoncentergb.ListPoiActivity">
     <TextView
-        android:id="@+id/txtName_LstPoi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="20dp"
-        android:text="Nom"
-        android:textSize="18sp"/>
-
-    <TextView
-        android:id="@+id/txtAdress_LstPoi"
+        android:text="Mes parcourt"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"/>
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_height="1dp"
         android:layout_marginTop="10dp"
-        android:text="TextView" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/txtCodePost_LstPoi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:text="Code postal" />
-
-        <TextView
-            android:id="@+id/txtCity_LstPoi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:text="Ville" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btnAddParc_LstPoi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:elevation="1dp"
-        android:text="Ajouter à mon parcourt" />
-
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView_LstPoi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-
+        android:background="@android:color/darker_gray"/>
+    <ListView
+        android:id="@+id/lst_poi"
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp" />
 </LinearLayout>

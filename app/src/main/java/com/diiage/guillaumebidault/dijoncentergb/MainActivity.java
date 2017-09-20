@@ -1,13 +1,11 @@
 package com.diiage.guillaumebidault.dijoncentergb;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.diiage.guillaumebidault.dijoncentergb.adapter.PoiAdapter;
@@ -18,31 +16,31 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String URL_POI="https://my-json-server.typicode.com/lpotherat/pois/pois";
-
-    ListView mListPoi;
+    Button mBtnLstPoi;
+    Button mBtnAddParcourt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mListPoi=(ListView)findViewById(R.id.lst_poi);
+        //Definition des variables object par rapport a l'interface
+        mBtnLstPoi=(Button)findViewById(R.id.btn_main_lstPoi);
+        mBtnAddParcourt=(Button)findViewById(R.id.btn_main_addParcourt);
 
-        new ApiGetPoisTask(){
+        //Instanciation des listener pour les boutons
+        mBtnLstPoi.setOnClickListener(new View.OnClickListener() {
             @Override
-            protected void onPostExecute(List<Poi> pois) {
-                PoiAdapter poiAdapter=new PoiAdapter(MainActivity.this,pois);
-                mListPoi.setAdapter(poiAdapter);
-            }
-        }.execute(URL_POI);
-
-        mListPoi.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Poi item=(Poi)adapterView.getAdapter().getItem(i);
+            public void onClick(View view) {
                 Intent intent=new Intent(getBaseContext(),ListPoiActivity.class);
-                intent.putExtra("Poi",item);
+                startActivity(intent);
+            }
+        });
+
+        mBtnAddParcourt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getBaseContext(),AddParcourtActivity.class);
                 startActivity(intent);
             }
         });

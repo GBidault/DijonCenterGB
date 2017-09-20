@@ -22,6 +22,16 @@ public class ApiGetPoisTask extends AsyncTask<String,Void,List<Poi>> {
 
     private Exception exception;
 
+    String mFiltre;
+
+    public ApiGetPoisTask() {
+
+    }
+
+    public ApiGetPoisTask(String filtre) {
+        mFiltre=filtre;
+    }
+
     @Override
     protected List<Poi> doInBackground(String... urls) {
         List<Poi> pois=null;
@@ -43,7 +53,10 @@ public class ApiGetPoisTask extends AsyncTask<String,Void,List<Poi>> {
             JSONArray jsonArray=new JSONArray(responseStrBuilder.toString());
 
             for (int i=0;i<jsonArray.length();i++){
-                pois.add(new Poi(jsonArray.getJSONObject(i)));
+                Poi poi=new Poi(jsonArray.getJSONObject(i));
+                if(mFiltre==null||mFiltre.equals(poi.getType())){
+                    pois.add(poi);
+                }
             }
 
         }catch(Exception e){

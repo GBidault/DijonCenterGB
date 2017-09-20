@@ -13,37 +13,36 @@ import com.diiage.guillaumebidault.dijoncentergb.service.ApiGetPoisTask;
 
 import java.util.List;
 
-public class ListPoiActivity extends AppCompatActivity {
+public class ListPoiResultActivity extends AppCompatActivity {
 
     private static final String URL_POI="https://my-json-server.typicode.com/lpotherat/pois/pois";
 
-    ListView mListPoi;
+    ListView mListPoiResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_poi);
+        setContentView(R.layout.activity_list_poi_result);
+        mListPoiResult=(ListView)findViewById(R.id.lst_poi_result);
+        String filtre=getIntent().getStringExtra("Filtre");
 
-        mListPoi=(ListView)findViewById(R.id.lst_poi);
-
-        new ApiGetPoisTask(){
+        new ApiGetPoisTask(filtre){
             @Override
             protected void onPostExecute(List<Poi> pois) {
-                PoiAdapter poiAdapter=new PoiAdapter(ListPoiActivity.this,pois);
-                mListPoi.setAdapter(poiAdapter);
+                PoiAdapter poiAdapter=new PoiAdapter(ListPoiResultActivity.this,pois);
+                mListPoiResult.setAdapter(poiAdapter);
             }
         }.execute(URL_POI);
 
-        mListPoi.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mListPoiResult.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Poi item=(Poi)adapterView.getAdapter().getItem(i);
                 Intent intent=new Intent(getBaseContext(),DetailPoiActivity.class);
                 intent.putExtra("Poi",item);
-                setResult(1,intent);
-                finish();
-
+                startActivity(intent);
             }
         });
+
     }
 }

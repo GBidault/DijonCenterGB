@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DijonCenterGB</string>
+    <string name="title_activity_maps_poi">Map</string>
 </resources>

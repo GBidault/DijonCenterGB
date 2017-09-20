@@ -19,14 +19,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        /*String requette="CREATE TABLE parcourt (/"
-                        +"id integer primary key autoincrement, ";
-        sqLiteDatabase.execSQL(Da);*/
-
+        String requette="CREATE TABLE parcourt ( id VARCHAR PRIMARY KEY NOT NULL , nom VARCHAR NOT NULL , idCinema VARCHAR NOT NULL , nomCinema VARCHAR NOT NULL, idRestaurant VARCHAR NOT NULL , nomRestaurant VARCHAR NOT NULL, dateCreation DATE NOT NULL , datePrevu DATE NOT NULL, accompagnant VARCHAR NOT NULL , status VARCHAR NOT NULL);";
+        sqLiteDatabase.execSQL(requette);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
 
     }
 }

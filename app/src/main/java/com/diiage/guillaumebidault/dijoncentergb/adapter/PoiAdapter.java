@@ -26,7 +26,7 @@ public class PoiAdapter extends ArrayAdapter<Poi>{
     public View getView(int position, View convertView, ViewGroup parent){
 
         if(convertView == null){
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.lst_row_poi,parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.adapter_poi,parent, false);
         }
 
         PoiViewHolder viewHolder = (PoiViewHolder) convertView.getTag();
