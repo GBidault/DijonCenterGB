@@ -1,4 +1,19 @@
 <resources>
     <string name="app_name">DijonCenterGB</string>
     <string name="title_activity_maps_poi">Map</string>
+    <string name="MainActivity_Label_Parcourt">Mes Parcourts</string>
+    <string name="AddParcour_Label_Nouveau">New itinerary</string>
+    <string name="AddParcours_BtnCinema">Add cinema</string>
+    <string name="AddParcours_BtnRestaurant" >Add restaurant</string>
+    <string name="AddParcourt_LabelDate">Planned date</string>
+    <string name="AddParcourt_LabelAccompagnant">Companion</string>
+    <string name="Btn_Cancel">Cancel</string>
+    <string name="Btn_Validate">Validate</string>
+    <string name="Txt_Name">Name</string>
+    <string name="Txt_Adress">Adress</string>
+    <string name="Txt_ZipCode">Zip code</string>
+    <string name="Txt_City">City</string>
+    <string name="Txt_MyItinary">My itinary</string>
+    <string name="Txt_LstOfPoi">List of poi</string>
+    <string name="Txt_AddParcours">Add parcours</string>
 </resources>

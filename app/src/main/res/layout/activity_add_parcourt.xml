@@ -13,7 +13,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
-        android:text="Nouveau parcourt" />
+        android:text="@string/AddParcour_Label_Nouveau" />
     <EditText
         android:id="@+id/txt_addParcourt_nom"
         android:layout_width="match_parent"
@@ -29,7 +29,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
-        android:text="Ajouter un cinema" />
+        android:text="@string/AddParcours_BtnCinema" />
 
     <Button
         android:id="@+id/btn_addParcourt_restaurant"
@@ -38,7 +38,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
-        android:text="Ajouter un restaurant" />
+        android:text="@string/AddParcours_BtnRestaurant" />
 
     <TextView
         android:layout_width="match_parent"
@@ -46,7 +46,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
-        android:text="Date prevu" />
+        android:text="@string/AddParcourt_LabelDate" />
     <EditText
         android:id="@+id/date_addParcourt_datePrevu"
         android:layout_width="match_parent"
@@ -61,7 +61,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
-        android:text="Accompagnant" />
+        android:text="@string/AddParcourt_LabelAccompagnant" />
     <EditText
         android:id="@+id/txt_addParcourt_accompagnant"
         android:layout_width="match_parent"
@@ -80,19 +80,20 @@
             android:id="@+id/btn_addParcourt_annuler"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="10dp"
-            android:text="Annuler" />
+            android:text="Annuler"
+            tools:text="@string/Btn_Cancel" />
 
         <Button
             android:id="@+id/btn_addParcourt_valider"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="10dp"
-            android:text="Valider" />
+            android:text="@string/Btn_Validate" />
 
 
     </LinearLayout>

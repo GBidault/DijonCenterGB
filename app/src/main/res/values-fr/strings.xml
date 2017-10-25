@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DijonCenterGB</string>
+    <string name="MainActivity_Label_Parcourt">Mes parcourts</string>
+    <string name="AddParcour_Label_Nouveau">Nouveau itineraires</string>
+    <string name="AddParcours_BtnCinema">Ajouter cinema</string>
+    <string name="AddParcours_BtnRestaurant">Ajouter restaurant</string>
+    <string name="AddParcourt_LabelAccompagnant">Accompagnant</string>
+    <string name="AddParcourt_LabelDate">Date planifier</string>
+    <string name="Btn_Cancel">Annuler</string>
+    <string name="Btn_Validate">Valider</string>
+    <string name="Txt_AddParcours">Ajouter parcours</string>
+    <string name="Txt_Adress">Adresse</string>
+    <string name="Txt_City">Ville</string>
+    <string name="Txt_LstOfPoi">Liste des Poi</string>
+    <string name="Txt_MyItinary">Mon itineraire</string>
+    <string name="Txt_Name">Nom</string>
+    <string name="Txt_ZipCode">Code postale</string>
+</resources>

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.diiage.guillaumebidault.dijoncentergb.adapter.PoiAdapter;
 import com.diiage.guillaumebidault.dijoncentergb.beans.poi.Poi;
@@ -18,6 +19,7 @@ public class ListPoiActivity extends AppCompatActivity {
     private static final String URL_POI="https://my-json-server.typicode.com/lpotherat/pois/pois";
 
     ListView mListPoi;
+    TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +27,14 @@ public class ListPoiActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_poi);
 
         mListPoi=(ListView)findViewById(R.id.lst_poi);
+        tv=(TextView)findViewById(R.id.txt_poi_count);
 
         new ApiGetPoisTask(){
             @Override
             protected void onPostExecute(List<Poi> pois) {
                 PoiAdapter poiAdapter=new PoiAdapter(ListPoiActivity.this,pois);
                 mListPoi.setAdapter(poiAdapter);
+                tv.setText(String.valueOf(pois.size()));
             }
         }.execute(URL_POI);
 

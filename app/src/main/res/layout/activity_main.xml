@@ -14,7 +14,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
-        android:text="Liste des POIs" />
+        android:text="@string/Txt_LstOfPoi" />
 
     <Button
         android:id="@+id/btn_main_addParcourt"
@@ -23,7 +23,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
-        android:text="Ajouter un parcourt" />
+        android:text="@string/Txt_AddParcours" />
 
     <View
         android:layout_width="match_parent"
@@ -34,10 +34,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Mes parcourt"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:text="@string/MainActivity_Label_Parcourt" />
+
     <ListView
         android:id="@+id/lst_main_parcourt"
         android:layout_width="match_parent"
