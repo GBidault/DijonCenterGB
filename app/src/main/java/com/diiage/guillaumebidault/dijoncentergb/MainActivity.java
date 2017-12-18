@@ -1,7 +1,10 @@
 package com.diiage.guillaumebidault.dijoncentergb;
 
+import android.content.ContentUris;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -59,6 +62,12 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(MainActivity.this, new String[]{android.Manifest.permission.RECEIVE_SMS}, REQUEST_CODE_ASK_PERMISSIONS);
         }
 
+        Cursor cursor=getContentResolver().query(Uri.parse("content://fr.diiage.bidault.myhealth.PersonneProvider/personne/"),null,"",new String[]{},null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()){
+            int test1=cursor.getInt(0);
+            cursor.moveToNext();
+        }
         //Instanciation des listener pour les boutons
         mBtnLstPoi.setOnClickListener(new View.OnClickListener() {
             @Override
