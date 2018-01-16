@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.diiage.guillaumebidault.dijoncentergb.beans.poi.Parcourt;
 import com.diiage.guillaumebidault.dijoncentergb.beans.poi.Poi;
@@ -52,14 +53,33 @@ public class AddParcourtActivity extends AppCompatActivity {
         mBtnAnnuler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finishActivity(0);
+                finish();
             }
         });
         mBtnValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mParcourt.setNom(mTxtNom.getText().toString());
-                mParcourt.setAccompagnant(mTxtAccompagnant.getText().toString());
+                String Nom=mTxtNom.getText().toString();
+                String Accompagnant=mTxtAccompagnant.getText().toString();
+                //Verification des saisie obligatoire
+                if(Nom.isEmpty()){
+                    mTxtNom.setError("Nom requis");
+                    return;
+                }
+
+                if(mParcourt.getIdCinema()==null || mParcourt.getIdCinema().isEmpty()){
+                    mBtnCinema.setError("Saisie cinema obligatorie");
+                    return;
+                }
+
+                if(mParcourt.getIdRestaurant()==null || mParcourt.getIdRestaurant().isEmpty()){
+                    mBtnCinema.setError("Saisie restaurant obligatorie");
+                    return;
+                }
+
+
+                mParcourt.setNom(Nom);
+                mParcourt.setAccompagnant(Accompagnant);
                 mParcourt.setDateCreation(new Date().toString());
                 SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy", Locale.FRANCE);
                 mParcourt.setDatePrevu(mTxtAccompagnant.getText().toString());

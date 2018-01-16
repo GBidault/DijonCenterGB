@@ -1,6 +1,7 @@
 package com.diiage.guillaumebidault.dijoncentergb;
 
 import android.content.ContentUris;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.diiage.guillaumebidault.dijoncentergb.adapter.ParcourtAdapter;
 import com.diiage.guillaumebidault.dijoncentergb.adapter.PoiAdapter;
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         //Definition des variables object par rapport a l'interface
@@ -50,24 +53,35 @@ public class MainActivity extends AppCompatActivity {
 
         mListViewParcourt=(ListView)findViewById(R.id.lst_main_parcourt);
 
+        //Recuperation des la liste des parcours sauvegardé
         mParcourtDao.open();
         List<Parcourt> parc=mParcourtDao.getParcourts();
         mParcourtDao.close();
-
         ParcourtAdapter parcourtAdapter=new ParcourtAdapter(MainActivity.this,parc);
         mListViewParcourt.setAdapter(parcourtAdapter);
 
+        //Demande d'autorisation pour l'acces aux SMS
         int test=ContextCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.RECEIVE_SMS);
         if(ContextCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.RECEIVE_SMS) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(MainActivity.this, new String[]{android.Manifest.permission.RECEIVE_SMS}, REQUEST_CODE_ASK_PERMISSIONS);
         }
 
+        //Récuperation des données MyHearth
         Cursor cursor=getContentResolver().query(Uri.parse("content://fr.diiage.bidault.myhealth.PersonneProvider/personne/"),null,"",new String[]{},null);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()){
-            int test1=cursor.getInt(0);
-            cursor.moveToNext();
+        if(cursor!=null){
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()){
+                int test1=cursor.getInt(0);
+                cursor.moveToNext();
+            }
+        }else{
+            Context context = getApplicationContext();
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, "Application MyHearth Introuvable", duration);
+            toast.show();
         }
+
         //Instanciation des listener pour les boutons
         mBtnLstPoi.setOnClickListener(new View.OnClickListener() {
             @Override

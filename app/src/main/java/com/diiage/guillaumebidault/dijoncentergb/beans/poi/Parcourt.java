@@ -118,7 +118,7 @@ public class Parcourt {
 
     public ContentValues getContentValues(){
         ContentValues values=new ContentValues();
-        values.put("id",id);
+        if(id!=null)values.put("id",id);
         values.put( "nom",nom);
         values.put( "idCinema",idCinema);
         values.put( "nomCinema",nomCinema);

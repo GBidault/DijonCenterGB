@@ -16,4 +16,5 @@
     <string name="Txt_MyItinary">Mon itineraire</string>
     <string name="Txt_Name">Nom</string>
     <string name="Txt_ZipCode">Code postale</string>
+    <string name="Btn_modify">Modifier</string>
 </resources>
